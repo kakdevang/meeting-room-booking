@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meeting Room Booking</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Meeting Room Booking</h1>
+    <p>All times are UTC. Business hours: 08:00 to 20:00 UTC.</p>
+  </header>
+
+  <main>
+    <section aria-labelledby="day-heading">
+      <h2 id="day-heading">Day view</h2>
+      <div class="field">
+        <label for="day-date">Date (UTC)</label>
+        <input type="date" id="day-date">
+      </div>
+      <p id="day-status" aria-live="polite"></p>
+      <div id="schedule"></div>
+    </section>
+
+    <section aria-labelledby="book-heading">
+      <h2 id="book-heading">Book a room</h2>
+      <form id="booking-form" novalidate>
+        <div class="field">
+          <label for="room">Room</label>
+          <select id="room"><option value="">Choose a room</option></select>
+        </div>
+        <div class="field">
+          <label for="title">Title</label>
+          <input id="title" type="text" maxlength="100" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="email">Organizer email</label>
+          <input id="email" type="email" autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="attendees">Attendees</label>
+          <input id="attendees" type="number" min="1" step="1" value="1">
+        </div>
+        <div class="field">
+          <label for="book-date">Date (UTC)</label>
+          <input id="book-date" type="date">
+        </div>
+        <div class="field">
+          <label for="book-start">Start (UTC)</label>
+          <input id="book-start" type="time" step="900" min="08:00" max="20:00">
+        </div>
+        <div class="field">
+          <label for="book-end">End (UTC)</label>
+          <input id="book-end" type="time" step="900" min="08:00" max="20:00">
+        </div>
+        <div id="form-errors" class="error" role="alert" tabindex="-1"></div>
+        <p id="form-success" class="success" role="status"></p>
+        <button id="submit-booking" type="submit">Book room</button>
+      </form>
+    </section>
+
+    <section aria-labelledby="find-heading">
+      <h2 id="find-heading">Find a room</h2>
+      <form id="find-form" novalidate>
+        <div class="field">
+          <label for="find-date">Date (UTC)</label>
+          <input id="find-date" type="date">
+        </div>
+        <div class="field">
+          <label for="find-start">Start (UTC)</label>
+          <input id="find-start" type="time" step="900" min="08:00" max="20:00">
+        </div>
+        <div class="field">
+          <label for="find-end">End (UTC)</label>
+          <input id="find-end" type="time" step="900" min="08:00" max="20:00">
+        </div>
+        <div class="field">
+          <label for="find-capacity">Minimum capacity</label>
+          <input id="find-capacity" type="number" min="1" step="1" value="1">
+        </div>
+        <button type="submit">Search rooms</button>
+      </form>
+      <p id="find-status" aria-live="polite"></p>
+      <ul id="find-results"></ul>
+    </section>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
